@@ -1,0 +1,8 @@
+---
+
+# Tests for base-packages role
+
+- hosts: localhost
+  remote_user: root
+  roles:
+    - ansible-role-base-packages

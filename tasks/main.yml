@@ -1,0 +1,21 @@
+---
+
+# Tasks file for base-packages
+
+- name: Load the OS specific varibles
+  include_vars: "{{ role_path }}/vars/{{ ansible_os_family }}.yml"
+
+
+- include: Install_debian.yml
+  tags:
+    - install
+  when: ansible_os_family == "Debian"
+
+
+- name : Create root crontab scripts directory
+  file :
+    path  : /root/crontab-scripts
+    group : root
+    owner : root
+    state : directory
+    mode  : 0750
