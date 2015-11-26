@@ -4,4 +4,5 @@
   apt  :
     name  : "{{ item }}"
     state : present
+    update_cache : True
   with_items : "{{ base_packages_simples_list }}"
