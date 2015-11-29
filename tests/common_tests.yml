@@ -10,7 +10,7 @@
     - base_packages_installed is defined
 
 - debug:
-    var base_packages_install
+    var: base_packages_install
 
 - name: If packages list set by user, install it
   fail:
