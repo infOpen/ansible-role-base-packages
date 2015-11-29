@@ -9,6 +9,9 @@
     - base_packages_test_disable_installation
     - base_packages_installed is defined
 
+- debug:
+    var base_packages_install
+
 - name: If packages list set by user, install it
   fail:
     msg: "If user define a package list, install these packages"
