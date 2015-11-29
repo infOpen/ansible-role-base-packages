@@ -19,10 +19,17 @@ Local tests should be passed with Vagrant before push to Github.
 
 ## Role Variables
 
+If you want disabled package installation, set base_packages_install_enabled to
+"False".
+
+If base_packages_simples_list is not customized, os specific var will used,
+else it's the custom list of package.
+
 ### Default role variables
 
     # Defaults file for base-packages
     base_packages_simples_list : []
+    base_packages_install_enabled : True
 
 ### Specific debian variables
 

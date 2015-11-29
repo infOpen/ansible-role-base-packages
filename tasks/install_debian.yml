@@ -2,6 +2,7 @@
 
 - name : Install packages without specific configuration
   become: True
+  register: base_packages_install
   apt :
     name  : "{{ item }}"
     state : present

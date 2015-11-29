@@ -1,11 +1,42 @@
 ---
 
-# Tests for base-packages role
+# Tests for base-packages role with package installation disabled
 - hosts : all
   remote_user : vagrant
   roles :
     - .
   post_tasks :
     - include : ./common_tests.yml
-  vars : {}
+  vars :
+    base_packages_test_disable_installation: True
+    base_packages_test_with_user_list: False
+    base_packages_test_with_default_list: False
+    base_packages_install_enabled: False
+
+# Tests for base-packages role with custom package list
+- hosts : all
+  remote_user : vagrant
+  roles :
+    - .
+  post_tasks :
+    - include : ./common_tests.yml
+  vars :
+    base_packages_test_disable_installation: False
+    base_packages_test_with_user_list: True
+    base_packages_test_with_default_list: False
+    base_packages_simples_list:
+      - cowsay
+      - grep
+
+# Tests for base-packages role with os default package list
+- hosts : all
+  remote_user : vagrant
+  roles :
+    - .
+  post_tasks :
+    - include : ./common_tests.yml
+  vars :
+    base_packages_test_disable_installation: False
+    base_packages_test_with_user_list: False
+    base_packages_test_with_default_list: True
 

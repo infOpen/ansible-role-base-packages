@@ -4,6 +4,9 @@
 
 - name: Load the OS specific varibles
   include_vars: "{{ role_path }}/vars/{{ ansible_os_family }}.yml"
+  when :
+    - base_packages_install_enabled
+    - not base_packages_simples_list
 
 
 - include: install_debian.yml
