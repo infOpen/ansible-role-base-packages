@@ -9,6 +9,14 @@ Install base packages on servers.
 This role requires Ansible 1.5 or higher, and platform requirements are listed
 in the metadata file.
 
+## Testing
+
+This role contains two tests methods :
+- locally using Vagrant
+- automatically with Travis
+
+Local tests should be passed with Vagrant before push to Github.
+
 ## Role Variables
 
 ### Default role variables
