@@ -1,8 +1,11 @@
 ---
 
 - name : Install packages without specific configuration
-  apt  :
+  become: True
+  register: base_packages_install
+  apt :
     name  : "{{ item }}"
     state : present
     update_cache : True
   with_items : "{{ base_packages_simples_list }}"
+
