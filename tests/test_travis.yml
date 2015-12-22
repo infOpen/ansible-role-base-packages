@@ -6,9 +6,9 @@
   remote_user: root
   roles:
     - ansible-role-base-packages
-  post_tasks :
-    - include : ./common_tests.yml
-  vars :
+  post_tasks:
+    - include: ./common_tests.yml
+  vars:
     base_packages_test_disable_installation: True
     base_packages_test_with_user_list: False
     base_packages_test_with_default_list: False
@@ -17,11 +17,11 @@
 # Tests for base-packages role with custom package list
 - hosts: localhost
   remote_user: root
-  roles :
+  roles:
     - ansible-role-base-packages
-  post_tasks :
-    - include : ./common_tests.yml
-  vars :
+  post_tasks:
+    - include: ./common_tests.yml
+  vars:
     base_packages_test_disable_installation: False
     base_packages_test_with_user_list: True
     base_packages_test_with_default_list: False
@@ -32,11 +32,11 @@
 # Tests for base-packages role with os default package list
 - hosts: localhost
   remote_user: root
-  roles :
+  roles:
     - ansible-role-base-packages
-  post_tasks :
-    - include : ./common_tests.yml
-  vars :
+  post_tasks:
+    - include: ./common_tests.yml
+  vars:
     base_packages_test_disable_installation: False
     base_packages_test_with_user_list: False
     base_packages_test_with_default_list: True
