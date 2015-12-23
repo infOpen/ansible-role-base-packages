@@ -1,7 +1,7 @@
 ---
 
 # Debian specific vars
-base_packages_simples_list :
+base_packages_list:
   - sysstat                 # Used to monitor system stats
   - vim                     # Because loving color ;)
   - cron-apt                # To keep an package database updated
@@ -21,3 +21,4 @@ base_packages_simples_list :
   - rssh                    # To used restricted shell
   - sshfs                   # Used to mount fs by ssh
   - acl                     # Useful for extended permissions on fs
+

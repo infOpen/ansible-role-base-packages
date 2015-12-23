@@ -24,7 +24,7 @@
     base_packages_test_disable_installation: False
     base_packages_test_with_user_list: True
     base_packages_test_with_default_list: False
-    base_packages_simples_list:
+    base_packages_list:
       - cowsay
       - grep
 
