@@ -1,6 +1,6 @@
 ---
 
-# Defaults file for base-packages
-base_packages_simples_list : []
-base_packages_install_enabled : True
+# Defaults vars file for base-packages role
+base_packages_list: []
+base_packages_install_enabled: True
 
