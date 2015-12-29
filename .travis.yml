@@ -3,7 +3,10 @@
 # Travis file for base-packages role
 
 language: python
-python: "2.7"
+python: '2.7'
+
+env:
+  - ANSIBLE_ROLES_PATH=../
 
 before_install:
   # Make sure everything's up to date.
