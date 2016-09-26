@@ -8,4 +8,3 @@
     state: 'present'
     update_cache: True
   with_items: "{{ base_packages_list }}"
-

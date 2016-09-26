@@ -19,7 +19,7 @@
 - hosts: 'localhost'
   remote_user: 'root'
   roles:
-    - "{{ ansible-role-base-packages }}"
+    - 'ansible-role-base-packages'
   post_tasks:
     - include: './common_tests.yml'
   vars:
@@ -35,7 +35,7 @@
 - hosts: 'localhost'
   remote_user: 'root'
   roles:
-    - "{{ ansible-role-base-packages }}"
+    - 'ansible-role-base-packages'
   post_tasks:
     - include: './common_tests.yml'
   vars:

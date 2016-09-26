@@ -4,7 +4,7 @@
 - hosts: 'all'
   remote_user: 'vagrant'
   roles:
-    - '.'
+    - '..'
   post_tasks:
     - include: './tests/common_tests.yml'
   vars:
@@ -18,7 +18,7 @@
 - hosts: 'all'
   remote_user: 'vagrant'
   roles:
-    - '../'
+    - '..'
   post_tasks:
     - include: './tests/common_tests.yml'
   vars:
@@ -34,7 +34,7 @@
 - hosts: 'all'
   remote_user: 'vagrant'
   roles:
-    - '../'
+    - '..'
   post_tasks:
     - include: './tests/common_tests.yml'
   vars:
