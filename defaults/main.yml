@@ -1,6 +1,6 @@
 ---
 
 # Defaults vars file for base-packages role
+
 base_packages_list: []
 base_packages_install_enabled: True
-

@@ -2,29 +2,29 @@
 
 # Travis file for base-packages role
 
-language: python
+language: 'python'
 python: '2.7'
 
 env:
-  - ANSIBLE_ROLES_PATH=../
+  - 'ANSIBLE_ROLES_PATH=../'
 
 before_install:
   # Make sure everything's up to date.
-  - sudo apt-get update -qq
+  - 'sudo apt-get update -qq'
 
 install:
   # Install Ansible.
-  - pip install ansible
+  - 'pip install ansible'
 
   # Add ansible.cfg to pick up roles path.
-  - cp ./tests/ansible.cfg ./
+  - 'cp ./tests/ansible.cfg ./'
 
 script:
   # Check the role/playbook's syntax.
-  - ansible-playbook -i tests/inventory tests/test_travis.yml --syntax-check
+  - 'ansible-playbook -i tests/inventory tests/test_travis.yml --syntax-check'
 
   # Run the role/playbook with ansible-playbook.
-  - ansible-playbook -i tests/inventory tests/test_travis.yml --connection=local --sudo
+  - 'ansible-playbook -i tests/inventory tests/test_travis.yml --connection=local --sudo'
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   # Set change=1 due to a bug in ansible service module always return changed
@@ -33,4 +33,3 @@ script:
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
-

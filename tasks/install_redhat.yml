@@ -1,10 +1,10 @@
 ---
 
-- name: Install packages without specific configuration
+- name: 'Install packages without specific configuration'
   become: True
-  register: base_packages_install
+  register: 'base_packages_install'
   yum:
     name: "{{ item }}"
-    state: present
+    state: 'present'
   with_items: "{{ base_packages_list }}"
 

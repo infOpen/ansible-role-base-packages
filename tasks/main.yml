@@ -2,21 +2,20 @@
 
 # Tasks file for base-packages
 
-- name: Load the OS specific varibles
-  include_vars: "{{ role_path }}/vars/{{ ansible_os_family }}.yml"
+- name: 'Load the OS specific varibles'
+  include_vars: "{{ role_path }}/vars/{{ ansible_os_family | lower }}.yml"
   when:
-    - base_packages_install_enabled
-    - not base_packages_list
+    - "{{ base_packages_install_enabled }}"
+    - "{{ not base_packages_list }}"
 
 
-- include: install_debian.yml
+- include: 'install_debian.yml'
   tags:
-    - install
-  when: ansible_os_family == "Debian"
+    - 'install'
+  when: "{{ ansible_os_family == 'Debian' }}"
 
 
-- include: install_redhat.yml
+- include: 'install_redhat.yml'
   tags:
-    - install
-  when: ansible_os_family == "RedHat"
-
+    - 'install'
+  when: "{{ ansible_os_family == 'RedHat' }}"
