@@ -64,9 +64,11 @@ None
 
 ## Example Playbook
 
-    - hosts: servers
-      roles:
-         - { role: achaussier.base-packages }
+```
+- hosts: servers
+  roles:
+     - { role: achaussier.base-packages }
+```
 
 ## License
 
@@ -77,4 +79,3 @@ MIT
 Alexandre Chaussier (for Infopen company)
 - http://www.infopen.pro
 - a.chaussier [at] infopen.pro
-
