@@ -1,10 +1,21 @@
-# Vagrant files
-.vagrant
-/test_vagrant.yml
+# Ansible
+*.retry
+roles/
+tests/roles/
 
 # Swap files
+*.swo
 *.swp
 
-#Bundler
-.bundle
+# Python bytecode
+*.pyc
 
+# Pytest
+.cache
+
+# Tox
+.tox
+
+# Vagrant
+.vagrant
+*.log
