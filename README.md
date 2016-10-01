@@ -104,7 +104,7 @@ None
 ```yaml
 - hosts: 'servers'
   roles:
-     - role: 'achaussier.base-packages'
+     - role: 'infOpen.base-packages'
 ```
 
 ## License
