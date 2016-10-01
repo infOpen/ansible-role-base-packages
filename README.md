@@ -35,27 +35,39 @@ base_packages_install_enabled : True
 
 ### Specific debian variables
 
-```
-# Debian specific vars
-base_packages_simples_list :
-  - sysstat           # Used to monitor system stats
-  - vim               # Because loving color ;)
-  - cron-apt          # To keep an package database updated
-  - debian-goodies    # Provide checkrestart
-  - nagios-plugins    # Usefull monitoring scripts
-  - tree              # A tree view of directory
-  - htop              # top ehanced
-  - iotop             # Top for i/o
-  - iftop             # Top for netword traffic
-  - di                # Better than df
-  - dstat             # iotop/vmstat/iftop in a same tool
-  - mtr               # To complete traceroute
-  - molly-guard       # Not reboot by accident
-  - git               # Versionning
-  - curl              # Get files from internet or check url
-  - rssh              # To used restricted shell
-  - sshfs             # Used to mount fs by ssh
-  - acl               # Useful for extended permissions on fs
+```yaml
+base_packages_list: "{{
+  _base_packages_common
+  + _base_packages_os_specific[ansible_os_family | lower] }}"
+
+_base_packages_common:
+  - 'acl'       # Useful for extended permissions on fs
+  - 'curl'      # Get files from internet or check url
+  - 'dstat'     # iotop/vmstat/iftop in a same tool
+  - 'git'       # Versionning
+  - 'htop'      # top ehanced
+  - 'iftop'     # Top for netword traffic
+  - 'iotop'     # Top for i/o
+  - 'mtr'       # To complete traceroute
+  - 'rssh'      # To used restricted shell
+  - 'sshfs'     # Used to mount fs by ssh
+  - 'sysstat'   # Used to monitor system stats
+  - 'tree'      # A tree view of directory
+  - 'vim'       # Because loving color ;)
+
+_base_packages_os_specific:
+  debian:
+    - 'cron-apt'                # To keep an package database updated
+    - 'debian-goodies'          # Provide checkrestart
+    - 'di'                      # Better than df
+    - 'molly-guard'             # Not reboot by accident
+    - 'nagios-plugins'          # Usefull monitoring scripts
+    - 'nagios-plugins-contrib'  # Another usefull monitoring scripts
+
+  redhat:
+    - 'nagios-plugins-all'      # Usefull monitoring scripts
+    - 'yum-cron'                # To keep an package database updated
+    - 'yum-utils'               # Provide checkrestart
 ```
 
 ## Dependencies
@@ -64,10 +76,10 @@ None
 
 ## Example Playbook
 
-```
-- hosts: servers
+```yaml
+- hosts: 'servers'
   roles:
-     - { role: achaussier.base-packages }
+     - role: 'achaussier.base-packages'
 ```
 
 ## License
