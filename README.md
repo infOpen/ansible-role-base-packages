@@ -11,11 +11,36 @@ in the metadata file.
 
 ## Testing
 
-This role contains two tests methods :
-- locally using Vagrant
-- automatically with Travis
+This role has some testing methods.
 
-Local tests should be passed with Vagrant before push to Github.
+To use locally testing methods, you need to install Docker and/or Vagrant and Python requirements:
+
+* Create and activate a virtualenv
+* Install requirements
+
+```
+pip install -r requirements_dev.txt
+```
+
+### Automatically with Travis
+
+Tests runs automatically on Travis on push, release, pr, ... using docker testing containers
+
+### Locally with Docker
+
+You can use Docker to run tests on ephemeral containers.
+
+```
+make test-docker
+```
+
+### Locally with Vagrant
+
+You can use Vagrant to run tests on virtual machines.
+
+```
+make test-vagrant
+```
 
 ## Role Variables
 
