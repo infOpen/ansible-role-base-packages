@@ -10,6 +10,9 @@
     update_cache: True
   with_items: "{{ base_packages_list }}"
   when: "{{ (ansible_os_family | lower) == 'debian' }}"
+  tags:
+    - 'base-packages::role'
+    - 'base-packages::install'
 
 
 - name: 'Install base packages on RedHat systems'
@@ -19,3 +22,6 @@
     state: 'present'
   with_items: "{{ base_packages_list }}"
   when: "{{ (ansible_os_family | lower) == 'redhat' }}"
+  tags:
+    - 'base-packages::role'
+    - 'base-packages::install'
