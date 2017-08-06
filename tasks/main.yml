@@ -1,6 +1,13 @@
 ---
 
-# Tasks file for base-packages
+# Main tasks file for base-packages role
+
+- name: 'INIT | Manage variables to use for our target'
+  include: "{{ role_path }}/tasks/manage_variables.yml"
+  tags:
+    - 'role::base-packages'
+    - 'role::base-packages::init'
+
 
 - name: 'Install base packages on Debian systems'
   become: True
