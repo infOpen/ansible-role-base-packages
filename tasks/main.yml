@@ -1,27 +1,18 @@
 ---
 
-# Tasks file for base-packages
+# Main tasks file for base-packages role
 
-- name: 'Install base packages on Debian systems'
-  become: True
-  apt:
-    name: "{{ item }}"
-    state: 'present'
-    update_cache: True
-  with_items: "{{ base_packages_list }}"
-  when: "{{ (ansible_os_family | lower) == 'debian' }}"
+- name: 'INIT | Manage variables to use for our target'
+  include: "{{ role_path }}/tasks/manage_variables.yml"
   tags:
-    - 'base-packages::role'
-    - 'base-packages::install'
+    - 'role::base-packages'
+    - 'role::base-packages::init'
+    - 'role::base-packages::install'
 
 
-- name: 'Install base packages on RedHat systems'
+- name: 'INSTALL | OS families install tasks'
+  include: "{{ role_path }}/tasks/install/{{ ansible_os_family | lower }}_family.yml"
   become: True
-  yum:
-    name: "{{ item }}"
-    state: 'present'
-  with_items: "{{ base_packages_list }}"
-  when: "{{ (ansible_os_family | lower) == 'redhat' }}"
   tags:
-    - 'base-packages::role'
-    - 'base-packages::install'
+    - 'role::base-packages'
+    - 'role::base-packages::install'

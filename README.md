@@ -2,97 +2,101 @@
 
 [![Build Status](https://travis-ci.org/infOpen/ansible-role-base-packages.svg?branch=master)](https://travis-ci.org/infOpen/ansible-role-base-packages)
 
-Install base packages on servers.
+Install base-packages package.
 
 ## Requirements
 
-This role requires Ansible 1.5 or higher, and platform requirements are listed
-in the metadata file.
+This role requires Ansible 2.0 or higher,
+and platform requirements are listed in the metadata file.
 
 ## Testing
 
-This role has some testing methods.
+This role use [Molecule](https://github.com/metacloud/molecule/) to run tests.
 
-To use locally testing methods, you need to install Docker and/or Vagrant and Python requirements:
+Locally, you can run tests on Docker (default driver) or Vagrant.
+Travis run tests using Docker driver only.
 
-* Create and activate a virtualenv
-* Install requirements
+Currently, tests are done on:
+- Debian Jessie
+- Ubuntu Trusty
+- Ubuntu Xenial
 
-```
-pip install -r requirements_dev.txt
-```
+and use:
+- Ansible 2.0.x
+- Ansible 2.1.x
+- Ansible 2.2.x
+- Ansible 2.3.x
 
-### Automatically with Travis
+### Running tests
 
-Tests runs automatically on Travis on push, release, pr, ... using docker testing containers
-
-### Locally with Docker
-
-You can use Docker to run tests on ephemeral containers.
-
-```
-make test-docker
-```
-
-### Locally with Vagrant
-
-You can use Vagrant to run tests on virtual machines.
+#### Using Docker driver
 
 ```
-make test-vagrant
+$ tox
+```
+
+#### Using Vagrant driver
+
+```
+$ MOLECULE_DRIVER=vagrant tox
 ```
 
 ## Role Variables
 
-If you want disabled package installation, set base_packages_install_enabled to
-"False".
-
-If base_packages_simples_list is not customized, os specific var will used,
-else it's the custom list of package.
+If a package must removed, add `state` key with 'absent' value.
 
 ### Default role variables
 
-```
-# Defaults file for base-packages
-base_packages_simples_list : []
-base_packages_install_enabled : True
+```yaml
+base_packages_items: "{{ _base_packages_items }}"
+base_packages_repository_cache_valid_time: 3600
 ```
 
-### Specific debian variables
+### Specific Debian family variables
 
 ```yaml
-base_packages_list: "{{
-  _base_packages_common
-  + _base_packages_os_specific[ansible_os_family | lower] }}"
+_base_packages_items:
+  - name: 'acl'
+  - name: 'curl'
+  - name: 'dstat'
+  - name: 'git'
+  - name: 'htop'
+  - name: 'iftop'
+  - name: 'iotop'
+  - name: 'mtr'
+  - name: 'rssh'
+  - name: 'sshfs'
+  - name: 'sysstat'
+  - name: 'tree'
+  - name: 'vim'
+  - name: 'cron-apt'
+  - name: 'debian-goodies'
+  - name: 'di'
+  - name: 'molly-guard'
+  - name: 'nagios-plugins'
+  - name: 'nagios-plugins-contrib'
+```
 
-_base_packages_common:
-  - 'acl'       # Useful for extended permissions on fs
-  - 'curl'      # Get files from internet or check url
-  - 'dstat'     # iotop/vmstat/iftop in a same tool
-  - 'git'       # Versionning
-  - 'htop'      # top ehanced
-  - 'iftop'     # Top for netword traffic
-  - 'iotop'     # Top for i/o
-  - 'mtr'       # To complete traceroute
-  - 'rssh'      # To used restricted shell
-  - 'sshfs'     # Used to mount fs by ssh
-  - 'sysstat'   # Used to monitor system stats
-  - 'tree'      # A tree view of directory
-  - 'vim'       # Because loving color ;)
+### Specific RedHat family variables
 
-_base_packages_os_specific:
-  debian:
-    - 'cron-apt'                # To keep an package database updated
-    - 'debian-goodies'          # Provide checkrestart
-    - 'di'                      # Better than df
-    - 'molly-guard'             # Not reboot by accident
-    - 'nagios-plugins'          # Usefull monitoring scripts
-    - 'nagios-plugins-contrib'  # Another usefull monitoring scripts
-
-  redhat:
-    - 'nagios-plugins-all'      # Usefull monitoring scripts
-    - 'yum-cron'                # To keep an package database updated
-    - 'yum-utils'               # Provide checkrestart
+```yaml
+_base_packages_items:
+  - name: 'acl'
+  - name: 'curl'
+  - name: 'dstat'
+  - name: 'git'
+  - name: 'htop'
+  - name: 'iftop'
+  - name: 'iotop'
+  - name: 'mtr'
+  - name: 'rssh'
+  - name: 'sshfs'
+  - name: 'sysstat'
+  - name: 'tree'
+  - name: 'vim'
+  - name: 'nagios-plugins-all'
+  - name: 'yum-cron'
+  - name: 'yum-utils'
 ```
 
 ## Dependencies
@@ -101,10 +105,10 @@ None
 
 ## Example Playbook
 
-```yaml
-- hosts: 'servers'
+``` yaml
+- hosts: servers
   roles:
-     - role: 'infOpen.base-packages'
+    - { role: infOpen.base-packages }
 ```
 
 ## License
