@@ -1,0 +1,23 @@
+---
+
+# Debian family install tasks
+
+- name: 'INSTALL | APT | Remove packages'
+  apt:
+    name: "{{ item }}"
+    state: 'absent'
+    cache_valid_time: "{{ base_packages_repository_cache_valid_time }}"
+    update_cache: True
+  with_items: "{{ base_packages_items | selectattr('state', 'defined') | selectattr('state', 'equalto', 'absent') | list | map(attribute='name') | list }}"
+
+
+- name: 'INSTALL | APT | Install packages'
+  apt:
+    name: "{{ item }}"
+    state: 'present'
+    cache_valid_time: "{{ base_packages_repository_cache_valid_time }}"
+    update_cache: True
+  with_items: "{{
+    (base_packages_items | selectattr('state', 'defined') | rejectattr('state', 'equalto', 'absent') | list | map(attribute='name') | list)
+    + (base_packages_items | selectattr('state', 'undefined') | list | map(attribute='name') | list)
+  }}"

@@ -1,0 +1,24 @@
+---
+
+# Debian OS family vars
+
+_base_packages_items:
+  - name: 'acl'
+  - name: 'curl'
+  - name: 'dstat'
+  - name: 'git'
+  - name: 'htop'
+  - name: 'iftop'
+  - name: 'iotop'
+  - name: 'mtr'
+  - name: 'rssh'
+  - name: 'sshfs'
+  - name: 'sysstat'
+  - name: 'tree'
+  - name: 'vim'
+  - name: 'cron-apt'
+  - name: 'debian-goodies'
+  - name: 'di'
+  - name: 'molly-guard'
+  - name: 'nagios-plugins'
+  - name: 'nagios-plugins-contrib'
