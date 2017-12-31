@@ -1,8 +1,12 @@
 # base-packages
 
-[![Build Status](https://travis-ci.org/infOpen/ansible-role-base-packages.svg?branch=master)](https://travis-ci.org/infOpen/ansible-role-base-packages)
+[![Build Status](https://img.shields.io/travis/infOpen/ansible-role-base-packages/master.svg?label=travis_master)](https://travis-ci.org/infOpen/ansible-role-base-packages)
+[![Build Status](https://img.shields.io/travis/infOpen/ansible-role-base-packages/develop.svg?label=travis_develop)](https://travis-ci.org/infOpen/ansible-role-base-packages)
+[![Updates](https://pyup.io/repos/github/infOpen/ansible-role-base-packages/shield.svg)](https://pyup.io/repos/github/infOpen/ansible-role-base-packages/)
+[![Python 3](https://pyup.io/repos/github/infOpen/ansible-role-base-packages/python-3-shield.svg)](https://pyup.io/repos/github/infOpen/ansible-role-base-packages/)
+[![Ansible Role](https://img.shields.io/ansible/role/12448.svg)](https://galaxy.ansible.com/infOpen/base-packages/)
 
-Install base-packages package.
+Install misc packages on systems to manage base of all deployments.
 
 ## Requirements
 
