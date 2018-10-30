@@ -7,8 +7,20 @@ driver:
 lint:
   name: 'yamllint'
 platforms:
+  - name: "base-packages-docker-centos7"
+    image: 'centos/systemd:latest'
+    command: '/sbin/init'
+    cap_add:
+      - 'SYS_PTRACE'
+    privileged: True
   - name: "base-packages-docker-jessie"
     image: 'minimum2scp/systemd-jessie:latest'
+    command: '/sbin/init'
+    cap_add:
+      - 'SYS_PTRACE'
+    privileged: True
+  - name: "base-packages-docker-stretch"
+    image: 'minimum2scp/systemd-stretch:latest'
     command: '/sbin/init'
     cap_add:
       - 'SYS_PTRACE'
@@ -19,8 +31,9 @@ platforms:
     cap_add:
       - 'SYS_PTRACE'
     privileged: True
-  - name: "base-packages-docker-trusty"
-    image: 'ubuntu:trusty'
+  - name: "base-packages-docker-bionic"
+    image: 'solita/ubuntu-systemd:18.04'
+    command: '/sbin/init'
     cap_add:
       - 'SYS_PTRACE'
     privileged: True

@@ -21,8 +21,10 @@ Local and Travis tests run tests on Docker by default.
 See molecule documentation to use other backend.
 
 Currently, tests are done on:
+- CentOS 7
 - Debian Jessie
-- Ubuntu Trusty
+- Debian Stretch
+- Ubuntu Bionic
 - Ubuntu Xenial
 
 and use:
