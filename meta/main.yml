@@ -3,17 +3,20 @@
 galaxy_info:
   author: 'Alexandre Chaussier'
   description: 'Ansible role to deploy some packages on systems'
-  company: 'Infopen (http://wwww.infopen.pro)'
+  company: 'Infopen (http://www.infopen.pro)'
   license: 'MIT'
-  min_ansible_version: '2.0'
+  min_ansible_version: '2.4'
   github_branch: 'master'
   platforms:
     - name: 'Debian'
       versions:
         - 'jessie'
+        - 'stretch'
+    - name: 'EL'
+      versions:
+        - '7'
     - name: 'Ubuntu'
       versions:
-        - 'trusty'
         - 'xenial'
   galaxy_tags:
     - 'system'

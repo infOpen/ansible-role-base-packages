@@ -1,31 +1,37 @@
 # base-packages
 
-[![Build Status](https://travis-ci.org/infOpen/ansible-role-base-packages.svg?branch=master)](https://travis-ci.org/infOpen/ansible-role-base-packages)
+[![Build Status](https://img.shields.io/travis/infOpen/ansible-role-base-packages/master.svg?label=travis_master)](https://travis-ci.org/infOpen/ansible-role-base-packages)
+[![Build Status](https://img.shields.io/travis/infOpen/ansible-role-base-packages/develop.svg?label=travis_develop)](https://travis-ci.org/infOpen/ansible-role-base-packages)
+[![Updates](https://pyup.io/repos/github/infOpen/ansible-role-base-packages/shield.svg)](https://pyup.io/repos/github/infOpen/ansible-role-base-packages/)
+[![Python 3](https://pyup.io/repos/github/infOpen/ansible-role-base-packages/python-3-shield.svg)](https://pyup.io/repos/github/infOpen/ansible-role-base-packages/)
+[![Ansible Role](https://img.shields.io/ansible/role/12448.svg)](https://galaxy.ansible.com/infOpen/base-packages/)
 
-Install base-packages package.
+Install misc packages on systems to manage base of all deployments.
 
 ## Requirements
 
-This role requires Ansible 2.0 or higher,
+This role requires Ansible 2.4 or higher,
 and platform requirements are listed in the metadata file.
 
 ## Testing
 
 This role use [Molecule](https://github.com/metacloud/molecule/) to run tests.
 
-Locally, you can run tests on Docker (default driver) or Vagrant.
-Travis run tests using Docker driver only.
+Local and Travis tests run tests on Docker by default.
+See molecule documentation to use other backend.
 
 Currently, tests are done on:
+- CentOS 7
 - Debian Jessie
-- Ubuntu Trusty
+- Debian Stretch
+- Ubuntu Bionic
 - Ubuntu Xenial
 
 and use:
-- Ansible 2.0.x
-- Ansible 2.1.x
-- Ansible 2.2.x
-- Ansible 2.3.x
+- Ansible 2.4.x
+- Ansible 2.5.x
+- Ansible 2.6.x
+- Ansible 2.7.x
 
 ### Running tests
 
@@ -33,12 +39,6 @@ and use:
 
 ```
 $ tox
-```
-
-#### Using Vagrant driver
-
-```
-$ MOLECULE_DRIVER=vagrant tox
 ```
 
 ## Role Variables

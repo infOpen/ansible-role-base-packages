@@ -10,7 +10,7 @@
 
 
 - name: 'INSTALL | YUM | Install packages'
-  apt:
+  yum:
     name: "{{ item }}"
     state: 'present'
   with_items: "{{

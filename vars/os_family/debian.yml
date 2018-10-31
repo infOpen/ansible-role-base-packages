@@ -20,5 +20,3 @@ _base_packages_items:
   - name: 'debian-goodies'
   - name: 'di'
   - name: 'molly-guard'
-  - name: 'nagios-plugins'
-  - name: 'nagios-plugins-contrib'
