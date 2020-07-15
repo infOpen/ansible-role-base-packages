@@ -3,17 +3,18 @@
 # RedHat family install tasks
 
 - name: 'INSTALL | YUM | Remove packages'
+  become: True
   yum:
-    name: "{{ item }}"
+    name: "{{ item.name }}"
     state: 'absent'
-  with_items: "{{ base_packages_items | selectattr('state', 'defined') | selectattr('state', 'equalto', 'absent') | list | map(attribute='name') | list }}"
+  loop: "{{ base_packages_items }}"
+  when: "item.state | default('present') == 'absent'"
 
 
 - name: 'INSTALL | YUM | Install packages'
+  become: True
   yum:
-    name: "{{ item }}"
+    name: "{{ item.name }}"
     state: 'present'
-  with_items: "{{
-    (base_packages_items | selectattr('state', 'defined') | rejectattr('state', 'equalto', 'absent') | list | map(attribute='name') | list)
-    + (base_packages_items | selectattr('state', 'undefined') | list | map(attribute='name') | list)
-  }}"
+  loop: "{{ base_packages_items }}"
+  when: "item.state | default('present') == 'present'"

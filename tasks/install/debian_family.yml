@@ -3,21 +3,22 @@
 # Debian family install tasks
 
 - name: 'INSTALL | APT | Remove packages'
+  become: True
   apt:
-    name: "{{ item }}"
+    name: "{{ item.name }}"
     state: 'absent'
     cache_valid_time: "{{ base_packages_repository_cache_valid_time }}"
     update_cache: True
-  with_items: "{{ base_packages_items | selectattr('state', 'defined') | selectattr('state', 'equalto', 'absent') | list | map(attribute='name') | list }}"
+  loop: "{{ base_packages_items }}"
+  when: "item.state | default('present') == 'absent'"
 
 
 - name: 'INSTALL | APT | Install packages'
+  become: True
   apt:
-    name: "{{ item }}"
+    name: "{{ item.name }}"
     state: 'present'
     cache_valid_time: "{{ base_packages_repository_cache_valid_time }}"
     update_cache: True
-  with_items: "{{
-    (base_packages_items | selectattr('state', 'defined') | rejectattr('state', 'equalto', 'absent') | list | map(attribute='name') | list)
-    + (base_packages_items | selectattr('state', 'undefined') | list | map(attribute='name') | list)
-  }}"
+  loop: "{{ base_packages_items }}"
+  when: "item.state | default('present') == 'present'"

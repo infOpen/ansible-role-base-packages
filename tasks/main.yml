@@ -3,7 +3,7 @@
 # Main tasks file for base-packages role
 
 - name: 'INIT | Manage variables to use for our target'
-  include: "{{ role_path }}/tasks/manage_variables.yml"
+  import_tasks: "{{ role_path }}/tasks/manage_variables.yml"
   tags:
     - 'role::base-packages'
     - 'role::base-packages::init'
@@ -11,8 +11,7 @@
 
 
 - name: 'INSTALL | OS families install tasks'
-  include: "{{ role_path }}/tasks/install/{{ ansible_os_family | lower }}_family.yml"
-  become: True
+  include_tasks: "{{ role_path }}/tasks/install/{{ ansible_os_family | lower }}_family.yml"
   tags:
     - 'role::base-packages'
     - 'role::base-packages::install'
