@@ -24,7 +24,6 @@ testinfra_hosts = AnsibleRunner(
     'iotop',
     'molly-guard',
     'mtr',
-    'rssh',
     'sshfs',
     'sysstat',
     'tree',
@@ -45,14 +44,12 @@ def test_debian_packages(host, name):
 @pytest.mark.parametrize('name', [
     'acl',
     'curl',
-    'dstat',
     'git',
     'iotop',
     'mtr',
     'sysstat',
     'tree',
     'vim-enhanced',
-    'yum-cron',
     'yum-utils'
 ])
 def test_centos_packages(host, name):
